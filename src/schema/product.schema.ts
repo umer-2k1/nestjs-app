@@ -9,6 +9,9 @@ export class Product {
   @Prop()
   desc: string;
 
+  @Prop()
+  category: string;
+
   // @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "Category" })
   // category: Category //import Schema here
   @Prop()
