@@ -6,9 +6,10 @@ import { mongooseConfig, connectDB } from './config/mongoose.config';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserService } from './user/user.service';
-import { User } from './user/user';
+// import { User } from './user/';
 import { UserController } from './user/user.controller';
 import { UserModule } from './user/user.module';
+import { AuthController } from './auth/auth.controller';
 import mongoose from 'mongoose';
 @Module({
   imports: [
@@ -17,8 +18,8 @@ import mongoose from 'mongoose';
     MongooseModule.forRootAsync({ useFactory: () => mongooseConfig }),
     UserModule,
   ],
-  controllers: [AppController, UserController],
-  providers: [AppService, UserService, User],
+  controllers: [AppController, UserController, AuthController],
+  providers: [AppService, UserService, UserModule],
 })
 export class AppModule {
   constructor() {
