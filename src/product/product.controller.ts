@@ -8,8 +8,6 @@ import {
   HttpCode,
   ValidationPipe,
 } from '@nestjs/common';
-import { Request } from 'express';
-import { CreateProductDto } from 'src/dto/product';
 import { Product } from 'src/schema/product.schema';
 import { ProductService } from './product.service';
 
