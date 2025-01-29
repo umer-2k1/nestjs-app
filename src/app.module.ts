@@ -21,8 +21,8 @@ import { AuthController } from './auth/auth.controller';
     }),
     UserModule,
   ],
-  controllers: [AppController, UserController, AuthController],
-  providers: [AppService, UserService, UserModule],
+  controllers: [AppController, AuthController],
+  providers: [AppService],
 })
 export class AppModule implements OnModuleInit {
   constructor(private readonly configService: ConfigService) {}

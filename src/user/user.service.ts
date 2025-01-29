@@ -6,7 +6,7 @@ import { User } from '../schema/user.schema';
 @Injectable()
 export class UserService {
   constructor(
-    @InjectModel(User.name)
+    @InjectModel('User')
     private readonly userModel: Model<User>,
   ) {}
 
