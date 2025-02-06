@@ -7,18 +7,30 @@ import {
   Param,
   HttpCode,
   ValidationPipe,
+  HttpStatus,
 } from '@nestjs/common';
 import { Product } from 'src/schema/product.schema';
 import { ProductService } from './product.service';
+import { ErrorResponse, SuccessResponse } from 'src/utils/response.util';
 
 @Controller('product')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Get('')
-  async fetchProducts(): Promise<Product[]> {
-    return this.productService.fetchAllProduct();
+  async fetchProducts() {
+    try {
+      const products = this.productService.fetchAllProduct();
+      return SuccessResponse(
+        HttpStatus.OK,
+        'Products fetched successfully',
+        products,
+      );
+    } catch (error) {
+      ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, error.message);
+    }
   }
+
   @Get('')
   async productDetail(@Param('id') id: string): Promise<Product> {
     return this.productService.fetchProductDetail(id);
