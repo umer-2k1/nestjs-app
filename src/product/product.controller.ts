@@ -18,7 +18,7 @@ export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Get('')
-  async fetchProducts() {
+  async fetchProducts(): Promise<any> {
     try {
       const products = this.productService.fetchAllProduct();
       return SuccessResponse(

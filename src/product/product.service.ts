@@ -2,7 +2,6 @@ import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Product } from 'src/schema/product.schema';
 import { Model } from 'mongoose';
-import { ErrorResponse, SuccessResponse } from 'src/utils/response.util';
 
 @Injectable()
 export class ProductService {
@@ -11,7 +10,7 @@ export class ProductService {
     private readonly productModel: Model<Product>,
   ) {}
 
-  async fetchAllProduct() {
+  async fetchAllProduct(): Promise<Product[]> {
     const products = await this.productModel.find({ isActive: true }).exec();
     return products;
   }
