@@ -20,14 +20,14 @@ export class UserService {
   async getUserById(id: string) {
     const user = await this.userModel.findById(id);
     if (!user) {
-      throw new NotFoundException('Could not find the user');
+      return ErrorResponse(404, 'Could not find the user');
     }
     return user;
   }
   async findByEmail(email: string) {
     const user = await this.userModel.findOne({ email });
     if (!user) {
-      throw new NotFoundException('Could not find the user');
+      return ErrorResponse(404, 'Could not find the user');
     }
     return user;
   }
